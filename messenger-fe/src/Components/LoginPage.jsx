@@ -17,7 +17,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div class="login-page">
         <h1>Welcome to Sleigh Ride's Chat App</h1>
         <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <label>
@@ -25,7 +25,7 @@ class LoginPage extends Component {
             <input id="username" required type="text"></input>
           </label>
           <label>
-            Password
+            Password:
             <input id="password" type="text"></input>
           </label>
           <label>
