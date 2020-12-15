@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-
+import { Link } from "@reach/router";
+import openSocket from "socket.io-client";
+const socket = openSocket("http://localhost:3000");
 class LoginPage extends Component {
   state = {
     username: "",
     password: "",
     chatroom: "",
+    id: "",
   };
 
   handleChange = ({ target: { value, id } }) => {
@@ -13,7 +16,16 @@ class LoginPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.setUser(this.state);
   };
+
+  componentDidMount() {
+    console.log(this.props);
+    socket.on("connect", () => {
+      console.log(socket.id);
+      this.setState({ id: socket.id });
+    });
+  }
 
   render() {
     return (
@@ -32,7 +44,9 @@ class LoginPage extends Component {
             Chatroom name:
             <input id="chatroom" required type="text"></input>
           </label>
-          <button>Enter!</button>
+          <Link to="/chat">
+            <button>Enter!</button>
+          </Link>
         </form>
       </div>
     );
