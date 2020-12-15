@@ -7,13 +7,19 @@ class LoginPage extends Component {
     chatroom: "",
   };
 
-  handleChange = ({ target: { value, id } }) => {};
+  handleChange = ({ target: { value, id } }) => {
+    this.setState({ [id]: value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   render() {
     return (
       <div>
         <h1>Welcome to Sleigh Ride's Chat App</h1>
-        <form onChange={this.handleChange}>
+        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <label>
             Username:
             <input id="username" required type="text"></input>
