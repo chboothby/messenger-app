@@ -7,9 +7,8 @@ const io = require("socket.io")(http);
 // app.use(cors());
 
 io.on("connection", (socket) => {
-  console.log("connected");
-  socket.on("message", ({ name, message }) => {
-    io.emit("message", { name, message });
+  socket.on("message", (data) => {
+    console.log(data);
   });
 });
 
